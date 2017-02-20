@@ -24,8 +24,8 @@ def singleton[T](e: T) = new Cons[T](e, new Nil[T])
 def nth[T](n: Int, xs: List[T]) : T =
   if (xs.isEmpty) throw new IndexOutOfBoundsException()
   else if (n < 0) throw new IndexOutOfBoundsException()
-  else if (n == 0) xs head
-  else nth(n - 1, xs tail)
+  else if (n == 0) xs.head
+  else nth(n - 1, xs.tail)
 
 val l = new Cons(1, new Cons(2, new Cons(3, new Nil)))
 nth(2, l)
@@ -44,7 +44,7 @@ abstract class IntSet {
 object Empty extends IntSet {
   def contains(x: Int) : Boolean = false
   def incl(x: Int) : IntSet = new NonEmpty(x, Empty, Empty)
-  override def union(other: IntSet) = other
+  override def union(other: IntSet) : IntSet = other
   override def toString: String = "."
 }
 

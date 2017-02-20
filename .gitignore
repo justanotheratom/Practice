@@ -1,3 +1,7 @@
 .idea/
 project/
 target/
+
+.vs/
+packages/
+*.cache

@@ -33,3 +33,16 @@ let rec quicksort3 = function
         quicksort3 smaller @ [first] @ quicksort3 larger
 
 quicksort3 [5;4;3;2;6;7;8]
+
+let rec insertionSort xs =
+
+    let rec insert x xs =
+        match xs with
+        | [] -> [x]
+        | y :: ys -> if (x <= y) then x :: xs else y :: insert x ys
+
+    match xs with
+    | [] -> []
+    | y :: ys -> insert y (insertionSort ys)
+
+insertionSort [5;4;3;2;6;7;8]

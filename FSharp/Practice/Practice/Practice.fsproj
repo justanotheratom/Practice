@@ -61,6 +61,8 @@
     <None Include="FizzBuzz.fsx" />
     <None Include="MathyExpressions.fsx" />
     <None Include="Sorting.fsx" />
+    <None Include="Stringy.fsx" />
+    <None Include="Networky.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

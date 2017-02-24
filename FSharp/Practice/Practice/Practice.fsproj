@@ -62,7 +62,7 @@
     <None Include="MathyExpressions.fsx" />
     <None Include="Sorting.fsx" />
     <None Include="Stringy.fsx" />
-    <None Include="Networky.fsx" />
+    <None Include="Web-y.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

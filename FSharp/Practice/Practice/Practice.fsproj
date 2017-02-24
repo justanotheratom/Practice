@@ -58,6 +58,9 @@
     <Content Include="packages.config" />
     <None Include="Recursive.fsx" />
     <None Include="Mathy.fsx" />
+    <None Include="FizzBuzz.fsx" />
+    <None Include="MathyExpressions.fsx" />
+    <None Include="Sorting.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

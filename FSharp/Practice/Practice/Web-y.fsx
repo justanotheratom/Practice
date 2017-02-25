@@ -29,7 +29,27 @@ let html =
       yield "</ul></body></html>" ]
     |> String.concat "\n"
 
-startWebServer defaultConfig (OK html)
+let angularHeader = """<head>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    </head>"""
+
+let fancyHtml =
+    [ yield """<html>"""
+      yield angularHeader
+      yield """ <body>"""
+      yield """  <table class="table table-stripped">"""
+      yield """   <thead><tr><th>Category</th><th>Count</th></tr></thead>"""
+      yield """    <tbody"""
+      for (category,count) in speciesSorted do
+        yield sprintf "<tr><td>%s</td><td>%d</td></tr>" category count
+      yield """    </tbody>"""
+      yield """  </table>"""
+      yield """ </body>"""
+      yield """</html>""" ]
+    |> String.concat "\n"
+
+startWebServer defaultConfig (OK fancyHtml)
 
 //------------------------------------------------------------------------------
 

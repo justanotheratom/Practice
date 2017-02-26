@@ -25,9 +25,8 @@ let rec fib n =
 let fibFast =
     let t = new Dictionary<int, int>()
     let rec fibCached n =
-        match t.ContainsKey n with
-        | true  -> t.[n]
-        | false ->
+        if t.ContainsKey n then t.[n]
+        else
             match n with
             | 0 -> 0
             | 1 -> 1

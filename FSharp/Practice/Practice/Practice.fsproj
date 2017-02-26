@@ -63,6 +63,7 @@
     <None Include="Sorting.fsx" />
     <None Include="Stringy.fsx" />
     <None Include="Web-y.fsx" />
+    <None Include="Playground.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">

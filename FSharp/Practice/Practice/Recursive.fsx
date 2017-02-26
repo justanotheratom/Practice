@@ -1,12 +1,45 @@
 ﻿
 open System
+open System.Collections.Generic
 open Microsoft.FSharp.Core
+
+//------------------------------------------------------------------------------
 
 let rec fib n =
     match n with
     | 0 -> 0
     | 1 -> 1
     | _ -> fib (n - 1) + fib (n - 2)
+
+fib 5
+fib 10
+fib 15
+fib 20
+fib 25
+fib 30
+fib 35
+fib 40
+
+let fibFast =
+    let t = new Dictionary<int, int>()
+    
+    let rec fibCached n =
+        match t.ContainsKey n with
+        | true  -> t.[n]
+        | false ->
+            match n with
+            | 0 -> 0
+            | 1 -> 1
+            | _ ->
+                let res = fibCached (n - 1) + fibCached (n - 2)
+                t.Add (n, res)
+                res
+
+    fibCached
+
+fibFast 10000
+
+//------------------------------------------------------------------------------
 
 let rec factorial n =
     match n with
@@ -23,6 +56,8 @@ let rec factorial3 =
     function
     | 0 | 1 -> 1
     | n -> n * factorial3 (n - 1)
+
+//------------------------------------------------------------------------------
 
 let rec sumList =
     function

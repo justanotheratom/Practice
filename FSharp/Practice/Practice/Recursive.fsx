@@ -41,6 +41,25 @@ let fibFast =
 
 time (fun () -> fibFast 10000)
 
+let memoize (f: 'T -> 'U) =
+    let t = new Dictionary<'T, 'U>(HashIdentity.Structural)
+    fun x ->
+        if t.ContainsKey x then t.[x]
+        else
+            let res = f x
+            t.Add (x, res)
+            res
+
+let rec fibFast2 =
+    memoize (fun n ->
+        match n with
+        | 0 -> 0
+        | 1 -> 1
+        | _ -> fibFast2 (n - 1) + fibFast2 (n - 2)
+    )
+
+time (fun () -> fibFast2 10000)
+
 //------------------------------------------------------------------------------
 
 let rec factorial n =

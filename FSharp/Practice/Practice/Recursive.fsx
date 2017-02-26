@@ -1,9 +1,17 @@
 ﻿
 open System
-open System.Collections.Generic
 open Microsoft.FSharp.Core
 
 //------------------------------------------------------------------------------
+
+open System.Diagnostics
+open System.Collections.Generic
+
+let time f =
+    let sw = Stopwatch.StartNew()
+    let res = f()
+    let finish = sw.Stop()
+    (res, sw.Elapsed.TotalMilliseconds |> sprintf "%f ms")
 
 let rec fib n =
     match n with
@@ -11,18 +19,11 @@ let rec fib n =
     | 1 -> 1
     | _ -> fib (n - 1) + fib (n - 2)
 
-fib 5
-fib 10
-fib 15
-fib 20
-fib 25
-fib 30
-fib 35
-fib 40
+[1..8]
+|> List.map (fun n -> time (fun () -> fib (n * 5)))
 
 let fibFast =
     let t = new Dictionary<int, int>()
-    
     let rec fibCached n =
         match t.ContainsKey n with
         | true  -> t.[n]
@@ -34,10 +35,12 @@ let fibFast =
                 let res = fibCached (n - 1) + fibCached (n - 2)
                 t.Add (n, res)
                 res
-
     fibCached
 
-fibFast 10000
+[1..8]
+|> List.map (fun n -> time (fun () -> fibFast (n * 5)))
+
+time (fun () -> fibFast 10000)
 
 //------------------------------------------------------------------------------
 

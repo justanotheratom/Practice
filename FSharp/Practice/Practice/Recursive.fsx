@@ -3,6 +3,55 @@ open System
 open Microsoft.FSharp.Core
 
 //------------------------------------------------------------------------------
+// Type definitions can be recursive too!
+//------------------------------------------------------------------------------
+
+type Tree<'T> =
+    | None
+    | Tip of 'T
+    | Tree of 'T * Tree<'T> * Tree<'T>
+
+let rec size tree =
+    match tree with
+    | None           -> 0
+    | Tip _          -> 1
+    | Tree (_, l, r) -> 1 + (size l) + (size r)
+
+let rec cataTree fNone fTip fTree tree =
+    let recurse = cataTree fNone fTip fTree
+    match tree with
+    | None           -> fNone ()
+    | Tip t          -> fTip t
+    | Tree (t, l, r) -> fTree t (recurse l) (recurse r)
+
+let size2 tree =
+    let fNone () = 0
+    let fTip t = 1
+    let fTree t l r = 1 + l + r
+    cataTree fNone fTip fTree tree
+
+let print tree =
+    let fNone () = "None"
+    let fTip t = t.ToString()
+    let fTree t l r = "(" + t.ToString() + " => " + l + ", " + r + ")"
+    cataTree fNone fTip fTree tree
+
+let deepCopy tree =
+    let fNone () = None
+    let fTip t = Tip t
+    let fTree t l r = Tree (t, l, r)
+    cataTree fNone fTip fTree tree
+
+let smallTree = Tree("1", Tree("2", Tip "a", Tip "b"), None)
+
+size smallTree
+size2 smallTree
+print smallTree
+
+let copyTree = deepCopy smallTree
+System.Object.ReferenceEquals(smallTree, copyTree) = false
+
+//------------------------------------------------------------------------------
 
 open System.Diagnostics
 open System.Collections.Generic
@@ -49,6 +98,8 @@ let memoize (f: 'T -> 'U) =
             let res = f x
             t.Add (x, res)
             res
+
+#nowarn "40"
 
 let rec fibFast2 =
     memoize (fun n ->

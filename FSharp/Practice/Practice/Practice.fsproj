@@ -64,6 +64,8 @@
     <None Include="Stringy.fsx" />
     <None Include="Web-y.fsx" />
     <None Include="Playground.fsx" />
+    <None Include="Scratch.fsx" />
+    <None Include="TypesWithMembers.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">

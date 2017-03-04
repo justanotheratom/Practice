@@ -12,3 +12,35 @@ module List =
 
 List.pairwise [1;2;3;4;5;6]
 List.pairwise [1;2;3;4;5]
+
+//------------------------------------------------------------------------------
+// Interop with Win32 API
+//------------------------------------------------------------------------------
+
+open System.Runtime.InteropServices
+
+type ControlEventHandler = delegate of int -> bool
+
+[<DllImport("kernel32.dll")>]
+extern void SetConsoleCtrlHandler(ControlEventHandler callback, bool add)
+
+let ctrlSignal = ref false
+
+let ctrlEventHandler =
+    new ControlEventHandler(fun i ->
+        if (i = 0) then
+            printfn "Exiting..";
+            ctrlSignal := true;
+            true
+        else
+            false
+    )
+
+SetConsoleCtrlHandler(ctrlEventHandler, true)
+
+printfn "Enter Ctrl+C to exit.."
+
+while (ctrlSignal = ref false) do
+    System.Threading.Thread.Sleep(1000)
+
+//------------------------------------------------------------------------------

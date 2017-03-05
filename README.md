@@ -15,3 +15,5 @@ These code snippets are not original code. They are inspired from various learni
 * LL: Language Limitation
 * LF: Language Feature
 * LQ: Language Quirk
+* PP: Programming Pattern
+* ??: Open Question

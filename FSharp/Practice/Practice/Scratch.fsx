@@ -1,5 +1,33 @@
 ﻿
 //------------------------------------------------------------------------------
+// PP: Encapsulate state and return a function.
+//------------------------------------------------------------------------------
+
+let generateTicket =
+    let mutable count = 0 // ??: Should I use ref here instead of mutable?
+    (fun () -> count <- count + 1; count)
+
+generateTicket ()
+
+//------------------------------------------------------------------------------
+// PP: Encapsulate state in a class type.
+//------------------------------------------------------------------------------
+
+type TicketGenerator() =
+    let mutable count = 0
+
+    member x.Next() =
+        count <- count + 1
+        count
+
+    member x.Reset () =
+        count <- 0
+
+let tg = TicketGenerator()
+tg.Next()
+tg.Reset()
+
+//------------------------------------------------------------------------------
 // LF: Modules can be extended with functions.
 //------------------------------------------------------------------------------
 

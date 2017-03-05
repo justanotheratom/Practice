@@ -26,7 +26,7 @@ module Tokenizer =
                 match x.Value with
                 | "^"                              -> HAT
                 | "+"                              -> PLUS
-                | "-"                          -> MINUS
+                | "-"                              -> MINUS
                 | s when System.Char.IsDigit s.[0] -> INT (int s)
                 | s                                -> ID s
             yield token]

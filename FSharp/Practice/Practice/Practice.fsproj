@@ -67,6 +67,7 @@
     <None Include="Scratch.fsx" />
     <None Include="TypesWithMembers.fsx" />
     <None Include="Polynomials.fsx" />
+    <None Include="Marshalling.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">

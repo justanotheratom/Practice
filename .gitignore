@@ -5,4 +5,5 @@ target/
 .vs/
 packages/
 obj/
+bin/
 *.cache

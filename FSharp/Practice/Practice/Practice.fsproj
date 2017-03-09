@@ -68,6 +68,8 @@
     <None Include="TypesWithMembers.fsx" />
     <None Include="Polynomials.fsx" />
     <None Include="Marshalling.fsx" />
+    <None Include="SequenceExpressions.fsx" />
+    <None Include="ActivePatterns.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">

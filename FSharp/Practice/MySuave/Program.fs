@@ -11,6 +11,6 @@ let main argv =
     let response = { Content = ""; StatusCode = 200 }
     let context = { Request = request; Response = response }
 
-    execute context (OK "Hello Suave!")
+    executeInLoop context (OK "Hello Suave!")
 
     0

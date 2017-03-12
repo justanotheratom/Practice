@@ -3,6 +3,7 @@
 open Suave.Http
 open Suave.Console
 open Suave.Successful
+open Suave.Filters
 open Combinators
 
 [<EntryPoint>]
@@ -12,7 +13,7 @@ let main argv =
     let response = { Content = ""; StatusCode = 200 }
     let context = { Request = request; Response = response }
 
-    let routes = ((OK "Hello") >=> (OK "World") >=> (OK "Foo"))
+    let routes = (GET >=> Path "/hello" >=> OK "hello")
 
     executeInLoop context routes
 

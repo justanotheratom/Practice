@@ -33,6 +33,20 @@ module Successful =
         |> Some
         |> async.Return
 
+module Filters =
+
+    open Http
+
+    let iff condition context =
+        if condition context then
+            context |> Some |> async.Return
+        else
+            None |> async.Return
+
+    let GET       = iff (fun c -> c.Request.Type  = GET)
+    let POST      = iff (fun c -> c.Request.Type  = POST)
+    let Path path = iff (fun c -> c.Request.Route = path)
+
 module Console =
 
     open Http

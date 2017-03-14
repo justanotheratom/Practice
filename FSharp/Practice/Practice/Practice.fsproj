@@ -70,6 +70,7 @@
     <None Include="Marshalling.fsx" />
     <None Include="SequenceExpressions.fsx" />
     <None Include="ActivePatterns.fsx" />
+    <None Include="TypeProviders.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">

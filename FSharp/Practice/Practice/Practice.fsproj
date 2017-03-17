@@ -71,6 +71,7 @@
     <None Include="SequenceExpressions.fsx" />
     <None Include="ActivePatterns.fsx" />
     <None Include="TypeProviders.fsx" />
+    <None Include="Database.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">
@@ -79,6 +80,10 @@
     </Reference>
     <Reference Include="FSharp.Data">
       <HintPath>..\packages\FSharp.Data.2.3.2\lib\net40\FSharp.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FSharp.Data.TypeProviders">
+      <HintPath>..\packages\FSharp.Data.TypeProviders.5.0.0.2\lib\net40\FSharp.Data.TypeProviders.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="mscorlib" />

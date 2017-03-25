@@ -1,10 +1,12 @@
 ﻿module FsUnitNUnit
 
-// Double-backtick syntax.
-// Can have standalone test functions.
-// 'should equal ..' instead of 'Assert.AreEquals'.
-
-// ??: Creating parameterized tests is a pain. (Fuchu looks better).
+//
+// + Double-backtick syntax.
+// + Can have standalone test functions.
+// + 'should equal ..' instead of 'Assert.AreEquals'.
+//
+// - Creating parameterized tests is a pain. (Fuchu looks better).
+//
 
 open NUnit.Framework
 open FsUnit

@@ -8,8 +8,15 @@
 open NUnit.Framework
 open FsCheck
 open FsUnit
+open Fuchu
 
 let revRevIsOrig (xs: list<int>) = List.rev (List.rev xs) = xs
 
 [<Test>]
-let listRevTest () = Check.Quick revRevIsOrig
+let revRevTest () = Check.Quick revRevIsOrig
+
+[<Tests>]
+let tests =
+    testList "FsCheckTests" [
+        testCase "List.rev" (fun _ -> Check.Quick revRevIsOrig)
+    ]

@@ -12,6 +12,10 @@ open Fuchu
 
 let revRevIsOrig (xs: list<int>) = List.rev (List.rev xs) = xs
 
+type ListProperties =
+  static member ``reverse of reverse is original`` (xs:list<int>) = List.rev(List.rev xs) = xs
+  static member ``reverse is original`` (xs:list<int>) = List.rev xs = xs
+
 [<Test>]
 let revRevTest () = Check.Quick revRevIsOrig
 
@@ -19,4 +23,5 @@ let revRevTest () = Check.Quick revRevIsOrig
 let tests =
     testList "FsCheckTests" [
         testCase "List.rev" (fun _ -> Check.Quick revRevIsOrig)
+        testCase "List properties" (fun _ -> Check.QuickAll<ListProperties>())
     ]

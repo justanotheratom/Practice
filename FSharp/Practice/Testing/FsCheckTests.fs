@@ -7,7 +7,6 @@
 
 open NUnit.Framework
 open FsCheck
-open FsUnit
 
 let revRevIsOrig (xs: list<int>) = List.rev (List.rev xs) = xs
 
@@ -16,6 +15,8 @@ type ListProperties =
   static member ``reverse is original`` (xs:list<int>) = List.rev xs = xs
 
 module UsingFsUnit =
+
+    open FsUnit
 
     [<Test>]
     let revRevTest () = Check.Quick revRevIsOrig
